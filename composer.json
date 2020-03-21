@@ -1,0 +1,41 @@
+{
+    "name": "backpack/filemanager",
+    "description": "Backpack admin interface for files and folder, using elFinder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian Tabacitu",
+            "email": "hello@tabacitu.ro",
+            "homepage": "https://backpackforlaravel.com"
+        }
+    ],
+    "homepage": "https://github.com/laravel-backpack/filemanager",
+    "keywords": ["Laravel", "FileManager"],
+    "require": {
+        "backpack/crud": "^4.0.0|^4.1.0",
+        "barryvdh/laravel-elfinder": "^0.4.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3|~4",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Backpack\\FileManager\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Backpack\\FileManager\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Backpack\\FileManager\\FileManagerServiceProvider"
+            ]
+        }
+    }
+}
