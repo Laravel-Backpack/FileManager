@@ -53,11 +53,11 @@ MIT. Please see the [license file](license.md) for more information.
 [ico-version]: https://img.shields.io/packagist/v/backpack/filemanager.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/backpack/filemanager.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/backpack/filemanager/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+[ico-styleci]: https://styleci.io/repos/249020338/shield
 
 [link-packagist]: https://packagist.org/packages/backpack/filemanager
 [link-downloads]: https://packagist.org/packages/backpack/filemanager
 [link-travis]: https://travis-ci.org/backpack/filemanager
-[link-styleci]: https://styleci.io/repos/12345678
+[link-styleci]: https://styleci.io/repos/249020338
 [link-author]: https://tabacitu.ro
 [link-contributors]: ../../contributors
