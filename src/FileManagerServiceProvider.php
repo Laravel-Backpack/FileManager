@@ -2,8 +2,8 @@
 
 namespace Backpack\FileManager;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\ServiceProvider;
 
 class FileManagerServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,7 @@ class FileManagerServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
     }
-    
+
     /**
      * Console-specific booting.
      *
