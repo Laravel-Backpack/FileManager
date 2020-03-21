@@ -2,11 +2,8 @@
 
 namespace Backpack\FileManager\Console\Commands;
 
-use Artisan;
-use Illuminate\Console\Command;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
 use Backpack\CRUD\app\Console\Commands\Traits\PrettyCommandOutput;
+use Illuminate\Console\Command;
 
 class Install extends Command
 {
