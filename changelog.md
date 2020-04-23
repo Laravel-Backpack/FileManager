@@ -2,7 +2,7 @@
 
 All notable changes to `FileManager` will be documented in this file.
 
-## Version 1.1.1 - 2020-04-23
+## Version 1.1.2 - 2020-04-23
 
 ### Fixed
 - CSS so that elFinder integrates better into the Backstrap design; 
