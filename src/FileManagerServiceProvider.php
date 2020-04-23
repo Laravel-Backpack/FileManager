@@ -43,6 +43,10 @@ class FileManagerServiceProvider extends ServiceProvider
             __DIR__.'/../config/elfinder.php'      => config_path('elfinder.php'),
         ], 'config');
 
+        $this->publishes([
+            __DIR__.'/../public/packages/backpack/filemanager/themes/Backpack'      => public_path('packages/backpack/filemanager/themes/Backpack'),
+        ], 'public');
+
         // Registering package commands.
         $this->commands($this->commands);
 
