@@ -2,6 +2,13 @@
 
 All notable changes to `FileManager` will be documented in this file.
 
+## Version 1.1.4 - 2020-04-27
+
+### Added
+- support for multiple selection inside standalonepopup;
+- support for mime type filtering inside standalonepopup;
+
+
 ## Version 1.1.3 - 2020-04-27
 
 ### Removed
