@@ -28,13 +28,13 @@
 @php
   $breadcrumbs = [
     trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
-    'File Manager' => false,
+    trans('backpack::crud.file_manager') => false,
   ];
 @endphp
 
 @section('header')
     <section class="container-fluid">
-      <h2>File Manager</h2>
+      <h2>{{ trans('backpack::crud.file_manager') }}</h2>
     </section>
 @endsection
 
