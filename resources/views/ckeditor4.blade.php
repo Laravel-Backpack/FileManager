@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
+
         @include('vendor.elfinder.common_scripts')
         @include('vendor.elfinder.common_styles')
 
@@ -23,11 +23,14 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
                     soundPath: '{{ asset($dir.'/sounds') }}',
+                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
+                        {{ $key }}: @json($clientConfig),
+                    @endforeach
                     getFileCallback : function(file) {
                         window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
                         window.close();

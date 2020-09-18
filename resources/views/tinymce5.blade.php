@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     @include('vendor.elfinder.common_scripts')
     @include('vendor.elfinder.common_styles')
 
@@ -32,6 +32,9 @@
                 },
                 url: '{{ route("elfinder.connector") }}',  // connector URL
                 soundPath: '{{ asset($dir.'/sounds') }}',
+                @foreach(config('elfinder.client_options') as $key => $clientConfig)
+                    {{ $key }}: @json($clientConfig),
+                @endforeach
                 getFileCallback: function(file) { // editor callback
                     FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE
                 }

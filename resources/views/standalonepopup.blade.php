@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
+
         @include('vendor.elfinder.common_scripts')
         @include('vendor.elfinder.common_styles')
 
@@ -12,7 +12,7 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
@@ -26,6 +26,9 @@
                             oncomplete: 'destroy'
                         }
                     },
+                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
+                        {{ $key }}: @json($clientConfig),
+                    @endforeach
                     getFileCallback: function (file) {
                         @if (request()->has('multiple') && request()->input('multiple') == 1)
                             window.parent.processSelectedMultipleFiles(file, '{{ $input_id  }}');

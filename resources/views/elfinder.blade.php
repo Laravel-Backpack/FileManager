@@ -15,11 +15,14 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url : '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}'
+                    soundPath: '{{ asset($dir.'/sounds') }}',
+                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
+                        {{ $key }}: @json($clientConfig),
+                    @endforeach
                 });
             });
         </script>
