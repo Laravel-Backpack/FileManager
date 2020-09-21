@@ -21,7 +21,8 @@
             }
 
             $().ready(function() {
-                var elf = $('#elfinder').elfinder({
+
+                var defaultElfConfig = {
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
@@ -31,13 +32,14 @@
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
                     soundPath: '{{ asset($dir.'/sounds') }}',
-                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
-                        {{ $key }}: @json($clientConfig),
-                    @endforeach
                     getFileCallback: function(file) { // editor callback
                         FileBrowserDialogue.mySubmit(file.url); // pass selected file path to TinyMCE
                     }
-                }).elfinder('instance');
+                };
+
+                var overrideConfig = @json(config('elfinder.client_options'));
+
+                var elf = $('#elfinder').elfinder(Object.assign(defaultElfConfig, overrideConfig)).elfinder('instance');
             });
         </script>
     </head>

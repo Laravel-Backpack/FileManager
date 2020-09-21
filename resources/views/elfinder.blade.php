@@ -10,7 +10,8 @@
             // Documentation for client options:
             // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
             $().ready(function() {
-                $('#elfinder').elfinder({
+
+                var defaultElfConfig = {
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
@@ -19,11 +20,12 @@
                         _token: '{{ csrf_token() }}'
                     },
                     url : '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}',
-                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
-                        {{ $key }}: @json($clientConfig),
-                    @endforeach
-                });
+                    soundPath: '{{ asset($dir.'/sounds') }}'
+                };
+
+                var overrideConfig = @json(config('elfinder.client_options'));
+
+                $('#elfinder').elfinder(Object.assign(defaultElfConfig, overrideConfig));
             });
         </script>
 @endsection
