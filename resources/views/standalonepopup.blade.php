@@ -27,9 +27,6 @@
                             oncomplete: 'destroy'
                         }
                     },
-                    @foreach(config('elfinder.client_options') as $key => $clientConfig)
-                        {{ $key }}: @json($clientConfig),
-                    @endforeach
                     getFileCallback: function (file) {
                         @if (request()->has('multiple') && request()->input('multiple') == 1)
                             window.parent.processSelectedMultipleFiles(file, '{{ $input_id  }}');
