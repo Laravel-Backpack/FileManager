@@ -11,6 +11,9 @@ Backpack admin interface for files and folder, using [barryvdh/laravel-elfinder]
 - publishes an elFinder config and view, for elFinder to play nice with Backpack;
 - adds a menu item to the sidebar;
 
+# for Laravel 8
+- install [laravel/ui](https://github.com/laravel/ui)
+
 ![https://backpackforlaravel.com/uploads/docs-4-0/media_library.png](https://backpackforlaravel.com/uploads/docs-4-0/media_library.png)
 
 
