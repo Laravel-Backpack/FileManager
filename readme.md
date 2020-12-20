@@ -28,6 +28,22 @@ Then run the install process:
 php artisan backpack:filemanager:install
 ```
 
+
+Then run to publish: config
+```bash
+php artisan vendor:publish --provider='Backpack\FileManager\FileManagerServiceProvider' --tag=config
+```
+
+Then run to publish: views
+```bash
+php artisan vendor:publish --provider='Backpack\FileManager\FileManagerServiceProvider' --tag=views
+```
+
+Then run to publish: public css file
+```bash
+php artisan vendor:publish --provider='Backpack\FileManager\FileManagerServiceProvider' --tag=public
+```
+
 That's it. Hit refresh in your admin panel, and you'll find a new sidebar item pointing to the File Manager.
 
 ## Usage
