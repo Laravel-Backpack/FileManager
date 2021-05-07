@@ -78,4 +78,16 @@ return [
 
     'options' => [],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Client Options
+    |--------------------------------------------------------------------------
+    |
+    | These options are converted into JSON and assigned on elfinder initialization.
+    | See https://github.com/Studio-42/elFinder/wiki/Client-configuration-options-2.1#contents
+    |
+    */
+    'client_options' => [
+
+    ],
 ];

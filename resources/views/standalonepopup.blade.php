@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
+
         @include('vendor.elfinder.common_scripts')
         @include('vendor.elfinder.common_styles')
 
         <script type="text/javascript">
             $().ready(function () {
-                var elf = $('#elfinder').elfinder({
+
+                var defaultElfConfig = {
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
@@ -35,7 +36,11 @@
 
                         parent.jQuery.colorbox.close();
                     }
-                }).elfinder('instance');
+                };
+
+                var overrideConfig = @json(config('elfinder.client_options'));
+
+                var elf = $('#elfinder').elfinder(Object.assign(defaultElfConfig, overrideConfig)).elfinder('instance');
             });
         </script>
 

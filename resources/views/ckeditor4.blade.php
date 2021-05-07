@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
+
         @include('vendor.elfinder.common_scripts')
         @include('vendor.elfinder.common_styles')
 
@@ -18,12 +18,12 @@
             $().ready(function() {
                 var funcNum = getUrlParam('CKEditorFuncNum');
 
-                var elf = $('#elfinder').elfinder({
+                var defaultElfConfig = {
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
@@ -32,7 +32,11 @@
                         window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
                         window.close();
                     }
-                }).elfinder('instance');
+                };
+
+                var overrideConfig = @json(config('elfinder.client_options'));
+
+                var elf = $('#elfinder').elfinder(Object.assign(defaultElfConfig, overrideConfig)).elfinder('instance');
             });
         </script>
     </head>
