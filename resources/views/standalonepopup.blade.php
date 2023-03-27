@@ -19,7 +19,7 @@
                     soundPath: '{{ asset($dir.'/sounds') }}',
                     dialog: {width: 900, modal: true, title: 'Select a file'},
                     resizable: false,
-                    onlyMimes: @json(unserialize(urldecode(request('mimes')))),
+                    onlyMimes: @json(unserialize(urldecode(request('mimes'))), JSON_UNESCAPED_SLASHES),
                     commandsOptions: {
                         getfile: {
                             multiple: {{ request('multiple') ? 'true' : 'false' }},
