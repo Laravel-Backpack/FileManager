@@ -1,19 +1,18 @@
-         <!-- jQuery and jQuery UI (REQUIRED) -->
-        @basset("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css")
+        {{-- jQuery (REQUIRED) --}}
         @if (!isset ($jquery) || (isset($jquery) && $jquery == true))
-        @basset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+        @basset('https://unpkg.com/jquery@3.6.4/dist/jquery.min.js')
         @endif
-        @basset("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js")
 
-        <!-- elFinder JS (REQUIRED) -->
-        {{-- <script src="{{ asset($dir.'/js/elfinder.min.js') }}"></script> --}}
-        @basset('https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.61/js/elfinder.min.js', true, [
-        'integrity' => 'sha512-8r9QT6jiymesvzLUgcWOBw2rh6lEPJNtv9D/NI7F5Tx85Ru29grtU++4uw4MEgG6eN0somSeOShMRKqlqn903A==',
-        'crossorigin' => 'anonymous',
-        'referrerpolicy' => 'no-referrer',
-        ])
+        {{-- jQuery UI and Smoothness theme --}}
+        @bassetArchive('https://github.com/jquery/jquery-ui/archive/refs/tags/1.13.2.zip', 'jquery-ui-1.13.2')
+        @basset('jquery-ui-1.13.2/jquery-ui-1.13.2/dist/themes/smoothness/jquery-ui.min.css')
+        @basset('jquery-ui-1.13.2/jquery-ui-1.13.2/dist/jquery-ui.min.js')
 
+        {{-- elFinder JS (REQUIRED) --}}
+        @bassetArchive('https://github.com/Studio-42/elFinder/archive/refs/tags/2.1.61.zip', 'elfinder-2.1.61')
+        @basset('elfinder-2.1.61/elFinder-2.1.61/js/elfinder.min.js')
+
+        {{-- elFinder translation (OPTIONAL) --}}
         @if($locale)
-        <!-- elFinder translation (OPTIONAL) -->
         @basset('https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.61/js/i18n/elfinder.'.$locale.'.min.js')
         @endif
