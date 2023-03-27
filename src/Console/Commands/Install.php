@@ -56,7 +56,7 @@ class Install extends Command
         }
 
         $this->line(' Publishing elFinder assets');
-        $this->executeProcess(['php', 'artisan', 'elfinder:publish']);
+        $this->executeArtisanProcess('elfinder:publish');
 
         $this->line(' Publishing custom elfinder views');
         $this->executeArtisanProcess('vendor:publish', [
