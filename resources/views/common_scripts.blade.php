@@ -16,3 +16,6 @@
         @if($locale)
         @basset('https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.61/js/i18n/elfinder.'.$locale.'.min.js')
         @endif
+
+        {{-- elFinder sounds --}}
+        @basset(base_path('vendor/studio-42/elfinder/sounds/rm.wav'))

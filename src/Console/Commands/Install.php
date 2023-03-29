@@ -3,7 +3,9 @@
 namespace Backpack\FileManager\Console\Commands;
 
 use Backpack\CRUD\app\Console\Commands\Traits\PrettyCommandOutput;
+use Backpack\FileManager\FileManagerServiceProvider;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class Install extends Command
@@ -35,22 +37,16 @@ class Install extends Command
     {
         $this->infoBlock('Installing Backpack FileManager', 'Step 1');
 
+        // Creating uploads directory
         $this->progressBlock('Creating uploads directory');
-        switch (DIRECTORY_SEPARATOR) {
-            case '/': // unix
-                $this->executeProcess(['mkdir', '-p', 'public/uploads']);
-                break;
-            case '\\': // windows
-                if (! file_exists('public\uploads')) {
-                    $this->executeProcess(['mkdir', 'public\uploads']);
-                }
-                break;
-        }
+        File::ensureDirectoryExists('public/uploads');
         $this->closeProgressBlock();
 
-        // Publishing elFinder assets
-        $this->progressBlock('Publishing elFinder assets');
-        $this->executeArtisanProcess('elfinder:publish');
+        // Publishing custom elfinder views
+        $this->progressBlock('Publishing custom elfinder views');
+        $this->executeArtisanProcess('vendor:publish', [
+            '--provider' => FileManagerServiceProvider::class,
+        ]);
         $this->closeProgressBlock();
 
         // Adding sidebar menu item
