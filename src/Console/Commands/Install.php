@@ -4,12 +4,11 @@ namespace Backpack\FileManager\Console\Commands;
 
 use Backpack\CRUD\app\Console\Commands\Traits\PrettyCommandOutput;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class Install extends Command
 {
     use PrettyCommandOutput;
-
-    protected $progressBar;
 
     /**
      * The name and signature of the console command.
@@ -34,48 +33,38 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->progressBar = $this->output->createProgressBar(4);
-        $this->progressBar->minSecondsBetweenRedraws(0);
-        $this->progressBar->maxSecondsBetweenRedraws(120);
-        $this->progressBar->setRedrawFrequency(1);
-        $this->progressBar->start();
+        $this->infoBlock('Installing Backpack FileManager', 'Step 1');
 
-        $this->line(' Creating uploads directory');
+        $this->progressBlock('Creating uploads directory');
         switch (DIRECTORY_SEPARATOR) {
             case '/': // unix
-                $createUploadDirectoryCommand = ['mkdir', '-p', 'public/uploads'];
+                $this->executeProcess(['mkdir', '-p', 'public/uploads']);
                 break;
             case '\\': // windows
                 if (! file_exists('public\uploads')) {
-                    $createUploadDirectoryCommand = ['mkdir', 'public\uploads'];
+                    $this->executeProcess(['mkdir', 'public\uploads']);
                 }
                 break;
         }
-        if (isset($createUploadDirectoryCommand)) {
-            $this->executeProcess($createUploadDirectoryCommand);
-        }
+        $this->closeProgressBlock();
 
-        $this->line(' Publishing elFinder assets');
+        // Publishing elFinder assets
+        $this->progressBlock('Publishing elFinder assets');
         $this->executeArtisanProcess('elfinder:publish');
+        $this->closeProgressBlock();
 
-        $this->line(' Publishing custom elfinder views');
-        $this->executeArtisanProcess('vendor:publish', [
-            '--provider' => 'Backpack\FileManager\FileManagerServiceProvider',
+        // Adding sidebar menu item
+        $this->progressBlock('Adding sidebar menu item');
+        $this->executeArtisanProcess('backpack:add-sidebar-content', [
+            'code' => '<li class="nav-item"><a class="nav-link" href="{{ backpack_url(\'elfinder\') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans(\'backpack::crud.file_manager\') }}</span></a></li>',
         ]);
+        $this->closeProgressBlock();
 
-        $this->line(' Adding sidebar menu item');
-        switch (DIRECTORY_SEPARATOR) {
-            case '/': // unix
-                $this->executeArtisanProcess('backpack:add-sidebar-content', [
-                    'code' => '<li class="nav-item"><a class="nav-link" href="{{ backpack_url(\'elfinder\') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans(\'backpack::crud.file_manager\') }}</span></a></li>', ]);
-                break;
-            case '\\': // windows
-                $this->executeArtisanProcess('backpack:add-sidebar-content', [
-                    'code' => '<li class="nav-item"><a class="nav-link" href="{{ backpack_url(\'elfinder\') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans(\'backpack::crud.file_manager\') }}</span></a></li>', ]);
-                break;
-        }
-
-        $this->progressBar->finish();
-        $this->info(' Backpack\FileManager installed.');
+        // Done
+        $url = Str::of(config('app.url'))->finish('/')->append('admin/elfinder');
+        $this->infoBlock('Backpack FileManager installation complete.', 'done');
+        $this->note("Go to <fg=blue>$url</> to access your filemanager.");
+        $this->note('You may need to run <fg=blue>php artisan serve</> to serve your Laravel project.');
+        $this->newLine();
     }
 }
