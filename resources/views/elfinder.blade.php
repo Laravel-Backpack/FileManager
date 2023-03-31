@@ -19,7 +19,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     url : '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}'
+                    soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}'
                 });
             });
         </script>
