@@ -2,6 +2,7 @@
 
 namespace Backpack\FileManager;
 
+use Backpack\Basset\Facades\Basset;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -48,5 +49,8 @@ class FileManagerServiceProvider extends ServiceProvider
         if (! Config::get('elfinder.route.prefix')) {
             Config::set('elfinder.route.prefix', Config::get('backpack.base.route_prefix').'/elfinder');
         }
+
+        // Add basset view path
+        Basset::addViewPath(realpath(__DIR__.'/../resources/views'));
     }
 }
