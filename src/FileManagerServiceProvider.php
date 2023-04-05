@@ -2,6 +2,7 @@
 
 namespace Backpack\FileManager;
 
+use Backpack\Basset\Facades\Basset;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,9 +19,6 @@ class FileManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'backpack');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack');
-
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -39,13 +37,10 @@ class FileManagerServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/elfinder'),
         ], 'views');
 
+        // Publishing config file.
         $this->publishes([
-            __DIR__.'/../config/elfinder.php'      => config_path('elfinder.php'),
+            __DIR__.'/../config/elfinder.php' => config_path('elfinder.php'),
         ], 'config');
-
-        $this->publishes([
-            __DIR__.'/../public/packages/backpack/filemanager/themes/Backpack'      => public_path('packages/backpack/filemanager/themes/Backpack'),
-        ], 'public');
 
         // Registering package commands.
         $this->commands($this->commands);
@@ -54,5 +49,8 @@ class FileManagerServiceProvider extends ServiceProvider
         if (! Config::get('elfinder.route.prefix')) {
             Config::set('elfinder.route.prefix', Config::get('backpack.base.route_prefix').'/elfinder');
         }
+
+        // Add basset view path
+        Basset::addViewPath(realpath(__DIR__.'/../resources/views'));
     }
 }
