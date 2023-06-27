@@ -32,8 +32,8 @@
 @endphp
 
 @section('header')
-    <section class="container-fluid">
-      <h2>{{ trans('backpack::crud.file_manager') }}</h2>
+    <section class="container-fluid" bp-section="page-header">
+      <h1 bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
     </section>
 @endsection
 
