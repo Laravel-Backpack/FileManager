@@ -1,5 +1,4 @@
-@extends('backpack::layouts.top_left')
-
+@extends(backpack_view('blank'))
 
 @section('after_scripts')
         @include('vendor.elfinder.common_scripts')
@@ -19,7 +18,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     url : '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}'
+                    soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}'
                 });
             });
         </script>
@@ -33,8 +32,8 @@
 @endphp
 
 @section('header')
-    <section class="container-fluid">
-      <h2>{{ trans('backpack::crud.file_manager') }}</h2>
+    <section class="container-fluid" bp-section="page-header">
+      <h1 bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
     </section>
 @endsection
 
