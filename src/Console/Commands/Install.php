@@ -50,8 +50,8 @@ class Install extends Command
         $this->closeProgressBlock();
 
         // Adding sidebar menu item
-        $this->progressBlock('Adding sidebar menu item');
-        $this->executeArtisanProcess('backpack:add-sidebar-content', [
+        $this->progressBlock('Adding menu item');
+        $this->executeArtisanProcess('backpack:add-menu-content', [
             'code' => '<li class="nav-item"><a class="nav-link" href="{{ backpack_url(\'elfinder\') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans(\'backpack::crud.file_manager\') }}</span></a></li>',
         ]);
         $this->closeProgressBlock();
