@@ -52,14 +52,14 @@ class Install extends Command
         // Adding sidebar menu item
         $this->progressBlock('Adding menu item');
         $this->executeArtisanProcess('backpack:add-menu-content', [
-            'code' => '<li class="nav-item"><a class="nav-link" href="{{ backpack_url(\'elfinder\') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans(\'backpack::crud.file_manager\') }}</span></a></li>',
+            'code' => '<x-backpack::menu-item title="trans(\'backpack::crud.file_manager\')" icon="la la-files-o" :link="backpack_url(\'elfinder\')" />',
         ]);
         $this->closeProgressBlock();
 
         // Done
         $url = Str::of(config('app.url'))->finish('/')->append('admin/elfinder');
         $this->infoBlock('Backpack FileManager installation complete.', 'done');
-        $this->note("Go to <fg=blue>$url</> to access your filemanager.");
+        $this->note('Go to <fg=blue>$url</> to access your filemanager.');
         $this->note('You may need to run <fg=blue>php artisan serve</> to serve your Laravel project.');
         $this->newLine();
     }
