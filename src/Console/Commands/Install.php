@@ -52,7 +52,7 @@ class Install extends Command
         // Adding sidebar menu item
         $this->progressBlock('Adding menu item');
         $this->executeArtisanProcess('backpack:add-menu-content', [
-            'code' => '<x-backpack::menu-item title="trans(\'backpack::crud.file_manager\')" icon="la la-files-o" :link="backpack_url(\'elfinder\')" />',
+            'code' => '<x-backpack::menu-item :title="trans(\'backpack::crud.file_manager\')" icon="la la-files-o" :link="backpack_url(\'elfinder\')" />',
         ]);
         $this->closeProgressBlock();
 
