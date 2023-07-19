@@ -34,8 +34,15 @@
                         @endif
 
                         parent.jQuery.colorbox.close();
-                    }
+                    },
+                    themes: {
+                        default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
+                        dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
+                    },
+                    theme: 'default',
                 }).elfinder('instance');
+
+                //elf.changeTheme('dark').storage('theme', 'dark');
             });
         </script>
 
