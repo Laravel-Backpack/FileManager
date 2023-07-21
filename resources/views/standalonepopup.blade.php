@@ -41,7 +41,7 @@
                         default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
                         dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
                     },
-                    theme: theme,
+                    theme: theme
                 },
                 function(fm, extraObj) {
                     fm.bind('open', function() {
