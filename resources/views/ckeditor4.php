@@ -62,7 +62,7 @@
                 }).elfinder('instance');
 
                 function isElfinderInDarkMode() {
-                    return typeof window.parent.colorMode !== 'undefined' && window.parent.colorMode.result === 'dark';
+                    return typeof window.parent?.colorMode !== 'undefined' && window.parent.colorMode.result === 'dark';
                 }
 
                 function setElFinderColorMode() {
@@ -70,12 +70,6 @@
 
                     let instance = $('#elfinder').elfinder('instance');
                     instance.changeTheme(theme).storage('theme', theme);
-                }
-
-                if(typeof window.parent.colorMode !== 'undefined') {
-                    window.parent.colorMode.onChange(function() {
-                        setElFinderColorMode();
-                    });
                 }
             });
         </script>
