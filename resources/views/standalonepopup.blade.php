@@ -3,13 +3,25 @@
     <head>
         
         @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles')
+        @include('vendor.elfinder.common_styles', ['styleBodyElement' => true])
+        <style type="text/css">
+        .elfinder-workzone {
+            min-height: max-content !important;
+        }
+
+        #elfinder {
+            height: 100% !important;
+            width: 100% !important;
+            top:0;
+            left: 0;
+        }
+        </style>
 
         <script type="text/javascript">
-            $().ready(function () {
-                var theme = 'default';
-
-                var elf = $('#elfinder').elfinder({
+            $(document).ready(function () {
+                let elfinderConfig = {
+                    cssAutoLoad : false,
+                    speed: 100,
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
@@ -35,37 +47,19 @@
                             window.parent.processSelectedFile(file.path, '{{ $input_id  }}');
                         @endif
 
-                        parent.jQuery.colorbox.close();
-                    },
-                    themes: {
-                        default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
-                        dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
-                    },
-                    theme: theme
-                },
-                function(fm, extraObj) {
-                    fm.bind('open', function() {
-                        setElFinderColorMode();
-                    });
-                }).elfinder('instance');
+                        window.parent.jQuery.colorbox.close();
+                    },                    
+                };
 
-                function isElfinderInDarkMode() {
-                    return typeof window.parent?.colorMode !== 'undefined' && window.parent.colorMode.result === 'dark';
-                }
-
-                function setElFinderColorMode() {
-                    theme = isElfinderInDarkMode() ? 'dark' : 'default';
-                    let instance = $('#elfinder').elfinder('instance');
-                    instance.changeTheme(theme).storage('theme', theme);
-                }
-            });
+                var elf = $('#elfinder').elfinder(elfinderConfig);
+                document.getElementById('elfinder').style.opacity = 1;
+              
+            });          
         </script>
-
     </head>
-    <body>
+    <body style="margin:0;position:absolute;top:0;left:0;width:100%;height:100%;transition: opacity 1s ease-out;opacity: 0;">
 
         <!-- Element where elFinder will be created (REQUIRED) -->
-        <div id="elfinder"></div>
-
+        <div id="elfinder" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
     </body>
 </html>
