@@ -41,7 +41,8 @@
                     default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
                     dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
                 },
-                theme: theme
+                theme: theme,
+                height: $(window).height()
             },
             function(fm, extraObj) {
                 fm.bind('open', function() {
@@ -62,7 +63,7 @@
         });
     </script>
 </head>
-<body>
+<body style="margin:0;top:0;left:0;bottom:0;width:100%;height:100%;">
 
 <!-- Element where elFinder will be created (REQUIRED) -->
 <div id="elfinder"></div>
