@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
+    @bassetDirectory(base_path('vendor/studio-42/elfinder/'), 'elfinder-vendor')
     @include('vendor.elfinder.common_scripts')
     @include('vendor.elfinder.common_styles')
 
@@ -31,7 +32,7 @@
                     _token: '{{ csrf_token() }}'
                 },
                 url: '{{ route("elfinder.connector") }}',  // connector URL
-                soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}',
+                soundPath: '{{ Basset::getUrl("elfinder-vendor/sounds") }}',
                 getFileCallback: function(file) { // editor callback
                     FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE
                 }
