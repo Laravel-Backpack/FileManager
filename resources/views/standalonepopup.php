@@ -29,12 +29,13 @@
                     <?php if ($locale) { ?>
                         lang: '<?= $locale ?>', // locale
                     <?php } ?>
-                    customData: { 
+                    customData: {
                         _token: '<?= csrf_token() ?>'
                     },
                     url: '<?= route('elfinder.connector') ?>',  // connector URL
                     soundPath: '<?= asset($dir.'/sounds') ?>',
                     dialog: {width: 900, modal: true, title: 'Select a file'},
+                    height: '100%',
                     resizable: false,
                     commandsOptions: {
                         getfile: {
