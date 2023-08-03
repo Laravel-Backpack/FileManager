@@ -3,28 +3,29 @@
 <head>
     
     @include('vendor.elfinder.common_scripts')
-    @include('vendor.elfinder.common_styles')
+    @include('vendor.elfinder.common_styles', ['styleBodyElement' => true])
 
     <!-- elFinder initialization (REQUIRED) -->
     <script type="text/javascript">
-        var FileBrowserDialogue = {
-            init: function() {
-                // Here goes your code for setting your custom things onLoad.
-            },
-            mySubmit: function (file) {
-                window.parent.postMessage({
-                    mceAction: 'fileSelected',
-                    data: {
-                        file: file
-                    }
-                }, '*');
-            }
-        };
+        $(document).ready(function () {
 
-        $().ready(function() {
-            var theme = 'default';
+            var FileBrowserDialogue = {
+                init: function() {
+                    // Here goes your code for setting your custom things onLoad.
+                },
+                mySubmit: function (file) {
+                    window.parent.postMessage({
+                        mceAction: 'fileSelected',
+                        data: {
+                            file: file
+                        }
+                    }, '*');
+                }
+            };
 
-            var elf = $('#elfinder').elfinder({
+            let elfinderConfig = {
+                cssAutoLoad : false,
+                speed: 100,
                 // set your elFinder options here
                 @if($locale)
                     lang: '{{ $locale }}', // locale
@@ -37,29 +38,11 @@
                 getFileCallback: function(file) { // editor callback
                     FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE
                 },
-                themes: {
-                    default : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-gray.json',
-                    dark : 'https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/manifests/material-default.json',
-                },
-                theme: theme,
                 height: $(window).height()
-            },
-            function(fm, extraObj) {
-                fm.bind('open', function() {
-                    setElFinderColorMode();
-                });
-            }).elfinder('instance');
+            };
 
-            function isElfinderInDarkMode() {
-                return typeof window.parent?.colorMode !== 'undefined' && window.parent.colorMode.result === 'dark';
-            }
-
-            function setElFinderColorMode() {
-                theme = isElfinderInDarkMode() ? 'dark' : 'default';
-
-                let instance = $('#elfinder').elfinder('instance');
-                instance.changeTheme(theme).storage('theme', theme);
-            }
+            var elf = $('#elfinder').elfinder(elfinderConfig);
+            document.getElementById('elfinder').style.opacity = 1;
         });
     </script>
 </head>
