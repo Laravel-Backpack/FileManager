@@ -5,13 +5,13 @@
 @basset('elfinder-2.1.61/elFinder-2.1.61/css/elfinder.min.css')
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/css/theme.min.css')
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/images/loading.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/icons/material.eot', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/icons/material.svg', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/font/material.eot', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/font/material.svg', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/images/icons-big.svg', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/images/icons-small.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/icons/material.woff', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/icons/material.ttf', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/icons/material.woff2', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/font/material.woff', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/font/material.ttf', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme/Material/font/material.woff2', false)
 
 @bassetBlock('elfinderThemeSwitcherScript.js')
 <script type="text/javascript">
