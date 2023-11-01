@@ -3,6 +3,7 @@
 namespace Backpack\FileManager;
 
 use Backpack\Basset\Facades\Basset;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,12 +18,20 @@ class FileManagerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        $config = $this->app['config']->get('elfinder.route', []);
+        $config['namespace'] = 'Backpack\FileManager\Http\Controllers';
+
+        $router->group($config, function($router)
+        {
+			$router->get('ckeditor5', ['as' => 'elfinder.ckeditor5', 'uses' => 'BackpackElfinderController@showCKeditor5']);
+        });
     }
 
     /**
