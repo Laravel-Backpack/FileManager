@@ -28,9 +28,8 @@ class FileManagerServiceProvider extends ServiceProvider
         $config = $this->app['config']->get('elfinder.route', []);
         $config['namespace'] = 'Backpack\FileManager\Http\Controllers';
 
-        $router->group($config, function($router)
-        {
-			$router->get('ckeditor5', ['as' => 'elfinder.ckeditor5', 'uses' => 'BackpackElfinderController@showCKeditor5']);
+        $router->group($config, function ($router) {
+            $router->get('ckeditor5', ['as' => 'elfinder.ckeditor5', 'uses' => 'BackpackElfinderController@showCKeditor5']);
         });
     }
 
