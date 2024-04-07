@@ -19,7 +19,8 @@ class Install extends Command
      */
     protected $signature = 'backpack:filemanager:install
                                 {--timeout=300} : How many seconds to allow each process to run.
-                                {--debug} : Show process output or not. Useful for debugging.';
+                                {--debug} : Show process output or not. Useful for debugging.
+                                {--force} : Overwrite existing files.';
 
     /**
      * The console command description.
@@ -46,6 +47,7 @@ class Install extends Command
         $this->progressBlock('Publishing custom elfinder views');
         $this->executeArtisanProcess('vendor:publish', [
             '--provider' => FileManagerServiceProvider::class,
+            '--force' => $this->option('force'),
         ]);
         $this->closeProgressBlock();
 
