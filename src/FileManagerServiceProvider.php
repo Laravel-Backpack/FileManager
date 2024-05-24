@@ -3,7 +3,6 @@
 namespace Backpack\FileManager;
 
 use Backpack\Basset\Facades\Basset;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,7 +17,7 @@ class FileManagerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
