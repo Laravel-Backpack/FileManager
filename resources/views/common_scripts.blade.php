@@ -1,6 +1,6 @@
         {{-- jQuery (REQUIRED) --}}
         @if (!isset ($jquery) || (isset($jquery) && $jquery == true))
-        @basset('https://unpkg.com/jquery@3.6.4/dist/jquery.min.js')
+        @basset('https://unpkg.com/jquery@3.6.1/dist/jquery.min.js')
         @endif
 
         {{-- jQuery UI and Smoothness theme --}}
