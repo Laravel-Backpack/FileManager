@@ -57,9 +57,9 @@ class Install extends Command
         $this->closeProgressBlock();
 
         // Done
-        $url = Str::of(config('app.url'))->finish('/')->append('admin/elfinder');
+        $url = Str::of(config('app.url'))->finish('/')->append(config('backpack.base.route_prefix').'/elfinder');
         $this->infoBlock('Backpack FileManager installation complete.', 'done');
-        $this->note('Go to <fg=blue>$url</> to access your filemanager.');
+        $this->note("Go to <fg=blue>$url</> to access your filemanager.");
         $this->note('You may need to run <fg=blue>php artisan serve</> to serve your Laravel project.');
         $this->newLine();
     }
