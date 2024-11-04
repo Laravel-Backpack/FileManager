@@ -1,3 +1,11 @@
+@php
+try {
+    $mimes = json_encode(Crypt::decrypt(urldecode(request('mimes'))), JSON_UNESCAPED_SLASHES);
+} catch (\Exception $e) {
+    Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
+    $mimes = json_encode([]);
+}
+@endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -32,7 +40,7 @@
                     url: '{{ route("elfinder.connector") }}',  // connector URL
                     soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}',
                     resizable: false,
-                    onlyMimes: @json(unserialize(urldecode(request('mimes'))), JSON_UNESCAPED_SLASHES),
+                    onlyMimes: {!! $mimes !!},
                     commandsOptions: {
                         getfile: {
                             multiple: {{ request('multiple') ? 'true' : 'false' }},
