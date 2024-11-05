@@ -3,13 +3,14 @@
 namespace Backpack\FileManager;
 
 use Backpack\Basset\Facades\Basset;
+use Barryvdh\Elfinder\ElfinderController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class FileManagerServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        \Backpack\FileManager\Console\Commands\Install::class,
+        Console\Commands\Install::class,
     ];
 
     /**
@@ -23,6 +24,11 @@ class FileManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+    }
+
+    public function register()
+    {
+        $this->app->bind(ElfinderController::class, BackpackElfinderController::class);
     }
 
     /**
