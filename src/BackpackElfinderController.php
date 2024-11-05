@@ -18,7 +18,7 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
             abort(403, 'Unauthorized action.');
         }
 
-        request()->merge(['mimes' => urlencode(serialize( $mimes))]);
+        request()->merge(['mimes' => urlencode(serialize($mimes))]);
 
         return $this->app['view']
             ->make($this->package.'::standalonepopup')
