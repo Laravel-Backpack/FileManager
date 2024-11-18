@@ -11,6 +11,11 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
     {
         $mimes = request('mimes');
 
+        if (! isset($mimes)) {
+            Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
+            abort(403, 'Unauthorized action.');
+        }
+
         try {
             $mimes = Crypt::decrypt(urldecode(request('mimes')));
         } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
@@ -18,7 +23,11 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
             abort(403, 'Unauthorized action.');
         }
 
-        request()->merge(['mimes' => urlencode(serialize($mimes))]);
+        if (! empty($mimes)) {
+            request()->merge(['mimes' => urlencode(serialize($mimes))]);
+        } else {
+            request()->merge(['mimes' => '']);
+        }
 
         return $this->app['view']
             ->make($this->package.'::standalonepopup')
