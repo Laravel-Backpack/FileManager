@@ -2,6 +2,7 @@
 
 namespace Backpack\FileManager;
 
+use Barryvdh\Elfinder\ElfinderController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,11 @@ class FileManagerServiceProvider extends ServiceProvider
         }
     }
 
+    public function register()
+    {
+        $this->app->bind(ElfinderController::class, BackpackElfinderController::class);
+    }
+
     /**
      * Console-specific booting.
      *
@@ -40,11 +46,11 @@ class FileManagerServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../config/elfinder.php'      => config_path('elfinder.php'),
+            __DIR__.'/../config/elfinder.php' => config_path('elfinder.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../public/packages/backpack/filemanager/themes/Backpack'      => public_path('packages/backpack/filemanager/themes/Backpack'),
+            __DIR__.'/../public/packages/backpack/filemanager/themes/Backpack' => public_path('packages/backpack/filemanager/themes/Backpack'),
         ], 'public');
 
         // Registering package commands.
