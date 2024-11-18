@@ -4,6 +4,7 @@ namespace Backpack\FileManager;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\Elfinder\ElfinderController;
 
 class FileManagerServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,11 @@ class FileManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+    }
+
+    public function register()
+    {
+        $this->app->bind(ElfinderController::class, BackpackElfinderController::class);
     }
 
     /**
