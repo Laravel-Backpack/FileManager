@@ -3,6 +3,7 @@
 namespace Backpack\FileManager;
 
 use Backpack\Basset\Facades\Basset;
+use Backpack\CRUD\ViewNamespaces;
 use Barryvdh\Elfinder\ElfinderController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -24,11 +25,24 @@ class FileManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.elfinder');
     }
 
     public function register()
     {
         $this->app->bind(ElfinderController::class, BackpackElfinderController::class);
+
+        // Add basset view path
+        Basset::addViewPath(realpath(__DIR__.'/../resources/views'));
+
+        ViewNamespaces::addFor('fields', [
+            'backpack.elfinder::fields',
+        ]);
+
+        ViewNamespaces::addFor('columns', [
+            'backpack.elfinder::columns',
+        ]);
     }
 
     /**
@@ -55,8 +69,5 @@ class FileManagerServiceProvider extends ServiceProvider
         if (! Config::get('elfinder.route.prefix')) {
             Config::set('elfinder.route.prefix', Config::get('backpack.base.route_prefix').'/elfinder');
         }
-
-        // Add basset view path
-        Basset::addViewPath(realpath(__DIR__.'/../resources/views'));
     }
 }
