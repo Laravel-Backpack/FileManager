@@ -1,7 +1,9 @@
 {{-- browse server input --}}
-
+@php
+$field['attributes']['data-elfinder-trigger-url'] = $field['attributes']['data-elfinder-trigger-url'] ?? url(config('elfinder.route.prefix').'/popup/'.$field['name']);
+$field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(Crypt::encrypt($field['mime_types'] ?? ''));
+@endphp
 @include('crud::fields.inc.wrapper_start')
-
     <label>{!! $field['label'] !!}</label>
     @include('crud::fields.inc.translatable_icon')
 	<div class="input-group">
@@ -10,7 +12,6 @@
 			name="{{ $field['name'] }}"
 			value="{{ old_empty_or_null($field['name'], '') ??  $field['value'] ?? $field['default'] ?? '' }}"
 			data-init-function="bpFieldInitBrowseElement"
-			data-elfinder-trigger-url="{{ url(config('elfinder.route.prefix').'/popup') }}"
 			@include('crud::fields.inc.attributes')
 
 			@if(!isset($field['readonly']) || $field['readonly']) readonly @endif
@@ -71,7 +72,7 @@
 
 				    // trigger the reveal modal with elfinder inside
 				    $.colorbox({
-				        href: triggerUrl + '/' + name,
+				        href: triggerUrl,
 				        fastIframe: false,
 				        iframe: true,
 				        width: '80%',
