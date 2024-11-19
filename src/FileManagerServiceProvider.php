@@ -39,6 +39,10 @@ class FileManagerServiceProvider extends ServiceProvider
         ViewNamespaces::addFor('fields', [
             'backpack.elfinder::fields',
         ]);
+
+        ViewNamespaces::addFor('columns', [
+            'backpack.elfinder::columns',
+        ]);
     }
 
     /**
