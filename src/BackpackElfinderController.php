@@ -24,7 +24,7 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
         }
 
         if (! empty($mimes)) {
-            request()->merge(['mimes' => urlencode(serialize($mimes))]);
+            request()->merge(['mimes' => urlencode(json_encode($mimes, JSON_UNESCAPED_SLASHES))]);
         } else {
             request()->merge(['mimes' => '']);
         }
