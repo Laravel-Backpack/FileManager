@@ -1,20 +1,16 @@
         {{-- jQuery (REQUIRED) --}}
         @if (!isset ($jquery) || (isset($jquery) && $jquery == true))
-        @basset('https://unpkg.com/jquery@3.6.1/dist/jquery.min.js')
+        @basset('bp-jquery')
         @endif
 
-        {{-- jQuery UI and Smoothness theme --}}
-        @bassetArchive('https://github.com/jquery/jquery-ui/archive/refs/tags/1.13.2.tar.gz', 'jquery-ui-1.13.2')
-        @basset('jquery-ui-1.13.2/jquery-ui-1.13.2/dist/themes/smoothness/jquery-ui.min.css')
-        @basset('jquery-ui-1.13.2/jquery-ui-1.13.2/dist/jquery-ui.min.js')
+        {{-- jQuery UI --}}
+        @basset('bp-jquery-ui')
 
-        {{-- elFinder JS (REQUIRED) --}}
-        @bassetArchive('https://github.com/Studio-42/elFinder/archive/refs/tags/2.1.64.tar.gz', 'elfinder-2.1.64')
-        @basset('elfinder-2.1.64/elFinder-2.1.64/js/elfinder.min.js')
+        @basset('bp-elfinder-js')
 
         {{-- elFinder translation (OPTIONAL) --}}
         @if($locale)
-        @basset('https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.64/js/i18n/elfinder.'.$locale.'.min.js')
+                @basset('bp-elfinder-i18n-'.$locale)
         @endif
 
         {{-- elFinder sounds --}}
