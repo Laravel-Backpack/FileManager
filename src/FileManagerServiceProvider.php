@@ -27,7 +27,7 @@ class FileManagerServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.elfinder');
-        if(!backpack_pro()) {
+        if (! backpack_pro()) {
             Basset::map('bp-jquery-ui-js', 'https://raw.githubusercontent.com/jquery/jquery-ui/refs/tags/1.13.2/dist/jquery-ui.min.js', ['integrity' => 'sha384-4D3G3GikQs6hLlLZGdz5wLFzuqE9v4yVGAcOH86y23JqBDPzj9viv0EqyfIa6YUL', 'crossorigin' => 'anonymous']);
         }
 
