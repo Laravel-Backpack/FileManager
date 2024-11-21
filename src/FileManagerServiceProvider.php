@@ -35,7 +35,7 @@ class FileManagerServiceProvider extends ServiceProvider
         Basset::map('bp-elfinder-css', 'https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/css/elfinder.min.css', ['integrity' => 'sha384-O+x3Lv203m3W8SILSSf8xt2ryvN+CEx3s9tpGloi3D6UQ+1BkbXPuSxEj7uhKKCs', 'crossorigin' => 'anonymous']);
         Basset::map('bp-elfinder-icons-big', 'https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/icons-big.svg', ['integrity' => 'sha384-BWeb84E4ly6GgjPMWRpJNB+I8XpW+xqF9kezQR6PNqXP0pmjHi8iqlGZs0JRgHlu', 'crossorigin' => 'anonymous']);
         Basset::map('bp-elfinder-logo', 'https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/logo.png', ['integrity' => 'sha384-mAtths5Wl6rU0MrgaCz2bJRTIG8LhA1pLZ4ZX+Qo9fQRjlKFxb5eLWUO3pZ7Aioq', 'crossorigin' => 'anonymous']);
-        
+
         $crudLanguages = array_keys(config('backpack.crud.languages', []));
 
         foreach ($crudLanguages as $language) {
