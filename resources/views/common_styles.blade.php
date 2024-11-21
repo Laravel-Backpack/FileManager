@@ -1,27 +1,22 @@
 <meta charset="utf-8">
 <title>File Manager</title>
 {{-- elFinder CSS (REQUIRED) --}}
-@php
-    $themeStylesheetVersion = '3.0.0';
-@endphp
-@bassetArchive('https://github.com/Studio-42/elFinder/archive/refs/tags/2.1.64.tar.gz', 'elfinder-2.1.64')
-@basset('elfinder-2.1.64/elFinder-2.1.64/css/elfinder.min.css')
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/css/theme.min.css')
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/images/loading.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/font/material.eot', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/font/material.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/images/icons-big.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/images/icons-small.svg', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/font/material.woff', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/font/material.ttf', false)
-@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/font/material.woff2', false)
+@basset('bp-elfinder-css')
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme.min.css')
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/loading.svg', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.eot', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.svg', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/icons-big.svg', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/icons-small.svg', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.woff', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.ttf', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.woff2', false)
 
 @bassetBlock('elfinderThemeSwitcherScript.js')
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
     function getElfinderStyleSheet(main = true) {
-        let themeStylesheetVersion = '{{$themeStylesheetVersion}}';
-        const regex =  new RegExp(main ? `RobiNN1\/elFinder-Material-Theme@${themeStylesheetVersion}\/Material\/css\/theme\.min\.css` : `RobiNN1\/elFinder-Material-Theme@${themeStylesheetVersion}\/Material\/css\/theme-gray\.min\.css`);
+        const regex =  new RegExp(main ? `RobiNN1\/elFinder-Material-Theme@3.0.0\/Material\/css\/theme\.min\.css` : `RobiNN1\/elFinder-Material-Theme@3.0.0\/Material\/css\/theme-gray\.min\.css`);
         const linkElements = document.querySelectorAll('link[rel="stylesheet"]');
         // Find the main elfinder stylesheet
         let selectedLinkElement;
@@ -35,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addElfinderLightStylesheet() {
-        let themeLightAsset = `{{ Basset::basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@'.$themeStylesheetVersion.'/Material/css/theme-gray.min.css') }}`;
+        let themeLightAsset = `{{ Basset::basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css') }}`;
         const match = themeLightAsset.match(/<link\s+href="([^"]+)"/i);
         if (match && match.length > 1) {
             let mainStyleSheet = getElfinderStyleSheet();
