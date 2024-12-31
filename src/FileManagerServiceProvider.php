@@ -71,7 +71,8 @@ class FileManagerServiceProvider extends ServiceProvider
     {
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/elfinder'),
+            __DIR__.'/../resources/views/standalonepopup.blade.php' => resource_path('views/vendor/elfinder/standalonepopup.blade.php'),
+            __DIR__.'/../resources/views/elfinder.blade.php' => resource_path('views/vendor/elfinder/elfinder.blade.php'),
         ], 'views');
 
         // Publishing config file.
