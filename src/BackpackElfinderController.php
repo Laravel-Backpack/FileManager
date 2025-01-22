@@ -30,8 +30,15 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
         }
 
         return $this->app['view']
-            ->make($this->package.'::standalonepopup')
+            ->make('backpack.elfinder::::standalonepopup')
             ->with($this->getViewVars())
             ->with(compact('input_id'));
+    }
+
+    public function showIndex()
+    {
+        return $this->app['view']
+            ->make('backpack.elfinder::elfinder')
+            ->with($this->getViewVars());
     }
 }

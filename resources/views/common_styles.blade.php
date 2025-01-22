@@ -2,6 +2,8 @@
 <title>File Manager</title>
 {{-- elFinder CSS (REQUIRED) --}}
 @basset('bp-elfinder-css')
+@basset('bp-elfinder-icons-big', false)
+@batter('bp-elfinder-logo', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme.min.css')
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/loading.svg', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.eot', false)

@@ -2,8 +2,8 @@
 
 @section('after_scripts')
 
-        @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles')
+        @include('backpack.elfinder::common_scripts')
+        @include('backpack.elfinder::common_styles')
 
         <!-- elFinder initialization (REQUIRED) -->
         <script type="text/javascript" charset="utf-8">
