@@ -46,7 +46,7 @@ class Install extends Command
         $this->progressBlock('Publishing the config file');
         $this->executeArtisanProcess('vendor:publish', [
             '--provider' => FileManagerServiceProvider::class,
-            '--tag'      => 'config',
+            '--tag' => 'config',
         ]);
         $this->closeProgressBlock();
 
