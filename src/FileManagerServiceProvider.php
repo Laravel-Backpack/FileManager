@@ -27,7 +27,7 @@ class FileManagerServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.elfinder');
-        
+
         $crudLanguages = array_keys(config('backpack.crud.languages', []));
         foreach ($crudLanguages as $language) {
             if ($language === 'en') {
