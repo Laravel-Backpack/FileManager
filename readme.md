@@ -34,7 +34,15 @@ That's it. Hit refresh in your admin panel, and you'll find a new sidebar item p
 
 You can use elFinder in Backpack:
 - stand-alone, by accessing the ```/admin/elfinder``` route (see screenshot above);
-- inside the [```browse```](https://backpackforlaravel.com/docs/4.1/crud-fields#browse), [```browse_multiple```](https://backpackforlaravel.com/docs/4.1/crud-fields#browse_multiple) or [```ckeditor```](https://backpackforlaravel.com/docs/4.1/crud-fields#ckeditor) field types;
+- inside the [```browse```](https://backpackforlaravel.com/docs/4.1/crud-fields#browse), [```browse_multiple```](https://backpackforlaravel.com/docs/4.1/crud-fields#browse_multiple);
+
+## Customization
+
+You can publish the views to your `resources/views/vendor/backpack/filemanager` folder by running:
+
+```bash
+php vendor:publish --provider="Backpack\FileManager\FileManagerServiceProvider" --tag="views"
+```
 
 ## Upgrade
 

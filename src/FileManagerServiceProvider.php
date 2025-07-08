@@ -27,6 +27,14 @@ class FileManagerServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.elfinder');
+
+        $crudLanguages = array_keys(config('backpack.crud.languages', []));
+        foreach ($crudLanguages as $language) {
+            if ($language === 'en') {
+                continue;
+            }
+            Basset::map('bp-elfinder-i18n-'.$language, 'https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/js/i18n/elfinder.'.$language.'.js');
+        }
     }
 
     public function register()
@@ -54,7 +62,7 @@ class FileManagerServiceProvider extends ServiceProvider
     {
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/elfinder'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/backpack/filemanager'),
         ], 'views');
 
         // Publishing config file.

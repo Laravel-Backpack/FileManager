@@ -42,10 +42,11 @@ class Install extends Command
         File::ensureDirectoryExists('public/uploads');
         $this->closeProgressBlock();
 
-        // Publishing custom elfinder views
-        $this->progressBlock('Publishing custom elfinder views');
+        // Publishing elfinder config file
+        $this->progressBlock('Publishing the config file');
         $this->executeArtisanProcess('vendor:publish', [
             '--provider' => FileManagerServiceProvider::class,
+            '--tag' => 'config',
         ]);
         $this->closeProgressBlock();
 
