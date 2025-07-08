@@ -80,7 +80,10 @@ $value = is_string($value) && $multiple ? json_decode($value) : $value;
 
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
-        @basset('https://unpkg.com/jquery-colorbox@1.6.4/example2/colorbox.css')
+        @basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/example2/colorbox.css', true, [
+			'integrity' => 'sha384-HmslgkPwGM5TYgFgpe7Hz++h4HkDNZij42ObIXoXK771r/rs+kicv69E2lj0WIRq', 
+			'crossorigin' => 'anonymous'
+		])
         @bassetBlock('backpack/pro/fields/browse-multiple-field.css')
         <style>
             #cboxContent, #cboxLoadedContent, .cboxIframe {
@@ -92,8 +95,14 @@ $value = is_string($value) && $multiple ? json_decode($value) : $value;
 
     @push('crud_fields_scripts')
 
-        @basset('https://unpkg.com/jquery-colorbox@1.6.4/jquery.colorbox-min.js')
-        @basset('https://unpkg.com/jquery-ui@1.13.2/dist/jquery-ui.min.js')
+        @basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/jquery.colorbox.min.js', true, [
+			'integrity' => 'sha384-nRGTVvv4Qn110QBA9rXeSIVNgDwYTg+ZqPaUquO44OQaVASFOVFo5beRb62KFOu/', 
+			'crossorigin' => 'anonymous'
+		])
+        @basset('https://raw.githubusercontent.com/jquery/jquery-ui/refs/tags/1.13.2/dist/jquery-ui.min.js', true, [
+            'integrity' => 'sha384-4D3G3GikQs6hLlLZGdz5wLFzuqE9v4yVGAcOH86y23JqBDPzj9viv0EqyfIa6YUL', 
+            'crossorigin' => 'anonymous'
+        ])
         @bassetBlock('backpack/pro/fields/browse-multiple-field.js')
         <script>
             // this global variable is used to remember what input to update with the file path

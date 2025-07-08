@@ -33,9 +33,18 @@ $field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(Crypt::
 	{{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
 		{{-- include browse server css --}}
-		@basset('https://unpkg.com/jquery-colorbox@1.6.4/example2/colorbox.css')
-		@basset('https://unpkg.com/jquery-colorbox@1.6.4/example2/images/loading.gif', false)
-		@basset('https://unpkg.com/jquery-colorbox@1.6.4/example2/images/controls.png', false)
+		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/example2/colorbox.css', true, [
+			'integrity' => 'sha384-HmslgkPwGM5TYgFgpe7Hz++h4HkDNZij42ObIXoXK771r/rs+kicv69E2lj0WIRq', 
+			'crossorigin' => 'anonymous'
+		])
+		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/example2/images/loading.gif', false, [
+			'integrity' => 'sha256-ZG7zstGXrrtjO6k6MkhemyiZVml/jgZY1LZCwarlmX0=', 
+			'crossorigin' => 'anonymous'
+		])
+		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/example2/images/controls.png', false, [
+			'integrity' => 'sha256-zTLuvjLgmphUaxZ/5gsLHyPz70A2wKH914uvqdG2xl0=', 
+			'crossorigin' => 'anonymous'
+		])
 		@bassetBlock('backpack/pro/fields/browse-field.css')
 		<style>
 			#cboxContent, #cboxLoadedContent, .cboxIframe {
@@ -47,7 +56,10 @@ $field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(Crypt::
 
     @push('crud_fields_scripts')
 		{{-- include browse server js --}}
-		@basset('https://unpkg.com/jquery-colorbox@1.6.4/jquery.colorbox-min.js')
+		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/jquery.colorbox.min.js', true, [
+			'integrity' => 'sha384-nRGTVvv4Qn110QBA9rXeSIVNgDwYTg+ZqPaUquO44OQaVASFOVFo5beRb62KFOu/', 
+			'crossorigin' => 'anonymous'
+		])
 		@bassetBlock('backpack/pro/fields/browse-field.js')
 		<script type="text/javascript">
 			// this global variable is used to remember what input to update with the file path
