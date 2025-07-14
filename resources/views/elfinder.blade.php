@@ -39,6 +39,12 @@
     </section>
 @endsection
 
+@section('header')
+    <section class="header-operation container-fluid animated fadeIn d-flex mb-2 align-items-baseline d-print-none" bp-section="page-header">
+        <h1 class="text-capitalize mb-0" bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
+    </section>
+@endsection
+
 @section('content')
 
         <!-- Element where elFinder will be created (REQUIRED) -->
