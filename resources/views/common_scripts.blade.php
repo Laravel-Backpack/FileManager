@@ -1,7 +1,7 @@
 {{-- jQuery (REQUIRED) --}}
 @if (!isset ($jquery) || (isset($jquery) && $jquery == true))
 	@basset('https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js', true, [
-		'integrity' => 'sha384-Vvooey8iu18IIP2UsBgOl+DI0kQR66LQqPBthxB5y4YqaRgugWOu+vaqwY/AGNAb', 
+		'integrity' => 'sha384-i61gTtaoovXtAbKjo903+O55Jkn2+RtzHtvNez+yI49HAASvznhe9sZyjaSHTau9', 
 		'crossorigin' => 'anonymous'
 	])
 @endif
