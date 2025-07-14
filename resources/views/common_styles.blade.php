@@ -1,11 +1,11 @@
 <meta charset="utf-8">
 <title>File Manager</title>
 {{-- elFinder CSS (REQUIRED) --}}
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/icons-big.svg', true, [
+@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/icons-big.svg', false, [
     'integrity' => 'sha384-BWeb84E4ly6GgjPMWRpJNB+I8XpW+xqF9kezQR6PNqXP0pmjHi8iqlGZs0JRgHlu', 
     'crossorigin' => 'anonymous'
 ])
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/logo.png', true, [
+@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/logo.png', false, [
     'integrity' => 'sha384-mAtths5Wl6rU0MrgaCz2bJRTIG8LhA1pLZ4ZX+Qo9fQRjlKFxb5eLWUO3pZ7Aioq', 
     'crossorigin' => 'anonymous'
 ])
