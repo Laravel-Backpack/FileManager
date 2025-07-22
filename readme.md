@@ -41,18 +41,18 @@ You can use elFinder in Backpack:
 You can publish the views to your `resources/views/vendor/backpack/filemanager` folder by running:
 
 ```bash
-php vendor:publish --provider="Backpack\FileManager\FileManagerServiceProvider" --tag="views"
+php vendor:publish --provider="Backpack\FileManager\FileManagerServiceProvider" --tag="elfinder-views"
+php vendor:publish --provider="Backpack\FileManager\FileManagerServiceProvider" --tag="elfinder-fields"
+php vendor:publish --provider="Backpack\FileManager\FileManagerServiceProvider" --tag="elfinder-columns"
+
 ```
 
 ## Upgrade
 
-To upgrade from v2 to v3 of this package:
+To upgrade from v3 to v4 of this package:
 ```bash
 # remove the published blade views
 rm -rf resources/views/vendor/elfinder
-
-# publish the new blade views
-php artisan backpack:filemanager:install
 ```
 
 ## Security
