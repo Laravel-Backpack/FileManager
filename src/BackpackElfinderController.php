@@ -30,7 +30,7 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
         }
 
         return $this->app['view']
-            ->make('backpack.elfinder::standalonepopup')
+            ->make('backpack.filemanager::standalonepopup')
             ->with($this->getViewVars())
             ->with(compact('input_id'));
     }
@@ -38,7 +38,7 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
     public function showIndex()
     {
         return $this->app['view']
-            ->make('backpack.elfinder::elfinder')
+            ->make('backpack.filemanager::elfinder')
             ->with($this->getViewVars());
     }
 }

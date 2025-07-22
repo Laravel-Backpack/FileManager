@@ -2,8 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         
-        @include('backpack.elfinder::common_scripts')
-        @include('backpack.elfinder::common_styles', ['styleBodyElement' => true])
+        @include('backpack.filemanager::common_scripts')
+        @include('backpack.filemanager::common_styles', ['styleBodyElement' => true])
         <style type="text/css">
         .elfinder-workzone {
             min-height: max-content !important;

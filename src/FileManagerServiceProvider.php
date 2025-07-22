@@ -26,7 +26,12 @@ class FileManagerServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.elfinder');
+        if (is_dir(base_path('resources/views/vendor/backpack/filemanager'))) {
+            $this->loadViewsFrom(base_path('resources/views/vendor/backpack/filemanager'), 'backpack.filemanager');
+        }
+
+        // Fallback to package views
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.filemanager');
 
         $crudLanguages = array_keys(config('backpack.crud.languages', []));
         foreach ($crudLanguages as $language) {
@@ -45,11 +50,11 @@ class FileManagerServiceProvider extends ServiceProvider
         Basset::addViewPath(realpath(__DIR__.'/../resources/views'));
 
         ViewNamespaces::addFor('fields', [
-            'backpack.elfinder::fields',
+            'backpack.filemanager::fields',
         ]);
 
         ViewNamespaces::addFor('columns', [
-            'backpack.elfinder::columns',
+            'backpack.filemanager::columns',
         ]);
     }
 
@@ -60,10 +65,21 @@ class FileManagerServiceProvider extends ServiceProvider
      */
     protected function bootForConsole()
     {
-        // Publishing the views.
+        // Publishing exclusively the elfinder files, not the columns and fields folders
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/backpack/filemanager'),
-        ], 'views');
+            __DIR__.'/../resources/views/elfinder.blade.php' => resource_path('views/vendor/backpack/filemanager/elfinder.blade.php'),
+            __DIR__.'/../resources/views/standalonepopup.blade.php' => resource_path('views/vendor/backpack/filemanager/standalonepopup.blade.php'),
+            __DIR__.'/../resources/views/common_scripts.blade.php' => resource_path('views/vendor/backpack/filemanager/common_scripts.blade.php'),
+            __DIR__.'/../resources/views/common_styles.blade.php' => resource_path('views/vendor/backpack/filemanager/common_styles.blade.php'),
+        ], 'elfinder-views');
+
+        $this->publishes([
+            __DIR__.'/../resources/views/columns' => resource_path('views/vendor/backpack/filemanager/columns'),
+        ], 'filemanager-columns');
+
+        $this->publishes([
+            __DIR__.'/../resources/views/fields' => resource_path('views/vendor/backpack/filemanager/fields'),
+        ], 'filemanager-fields');
 
         // Publishing config file.
         $this->publishes([
