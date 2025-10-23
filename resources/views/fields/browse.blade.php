@@ -56,8 +56,8 @@ $field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(Crypt::
 
     @push('crud_fields_scripts')
 		{{-- include browse server js --}}
-		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/jquery.colorbox.min.js', true, [
-			'integrity' => 'sha384-nRGTVvv4Qn110QBA9rXeSIVNgDwYTg+ZqPaUquO44OQaVASFOVFo5beRb62KFOu/', 
+		@basset('https://cdn.jsdelivr.net/npm/jquery-colorbox@1.6.4/jquery.colorbox.js', true, [
+			'integrity' => 'sha256-WYuzmp4s4GsP0fs+5V6iHJVa+ZbXywhZgnHyaJ95vSU=', 
 			'crossorigin' => 'anonymous'
 		])
 		@bassetBlock('backpack/pro/fields/browse-field.js')
