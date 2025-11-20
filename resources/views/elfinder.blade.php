@@ -2,8 +2,8 @@
 
 @section('after_scripts')
 
-        @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles')
+        @include('backpack.filemanager::common_scripts')
+        @include('backpack.filemanager::common_styles')
 
         <!-- elFinder initialization (REQUIRED) -->
         <script type="text/javascript" charset="utf-8">
@@ -36,6 +36,12 @@
 @section('header')
     <section class="container-fluid" bp-section="page-header">
       <h1 bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
+    </section>
+@endsection
+
+@section('header')
+    <section class="header-operation container-fluid animated fadeIn d-flex mb-2 align-items-baseline d-print-none" bp-section="page-header">
+        <h1 class="text-capitalize mb-0" bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
     </section>
 @endsection
 

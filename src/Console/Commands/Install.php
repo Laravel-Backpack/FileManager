@@ -38,14 +38,15 @@ class Install extends Command
         $this->infoBlock('Installing Backpack FileManager', 'Step 1');
 
         // Creating uploads directory
-        $this->progressBlock('Creating uploads directory');
+        $this->progressBlock('Creating uploads directory in case it does not exist');
         File::ensureDirectoryExists('public/uploads');
         $this->closeProgressBlock();
 
-        // Publishing custom elfinder views
-        $this->progressBlock('Publishing custom elfinder views');
+        // Publishing elfinder config file
+        $this->progressBlock('Publishing the config file');
         $this->executeArtisanProcess('vendor:publish', [
             '--provider' => FileManagerServiceProvider::class,
+            '--tag' => 'config',
         ]);
         $this->closeProgressBlock();
 
@@ -59,7 +60,7 @@ class Install extends Command
         // Done
         $url = Str::of(config('app.url'))->finish('/')->append('admin/elfinder');
         $this->infoBlock('Backpack FileManager installation complete.', 'done');
-        $this->note('Go to <fg=blue>$url</> to access your filemanager.');
+        $this->note('Go to <fg=blue>'.$url.'</> to access your filemanager.');
         $this->note('You may need to run <fg=blue>php artisan serve</> to serve your Laravel project.');
         $this->newLine();
     }

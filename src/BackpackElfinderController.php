@@ -24,14 +24,21 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
         }
 
         if (! empty($mimes)) {
-            request()->merge(['mimes' => urlencode(serialize($mimes))]);
+            request()->merge(['mimes' => urlencode(json_encode($mimes, JSON_UNESCAPED_SLASHES))]);
         } else {
             request()->merge(['mimes' => '']);
         }
 
         return $this->app['view']
-            ->make($this->package.'::standalonepopup')
+            ->make('backpack.filemanager::standalonepopup')
             ->with($this->getViewVars())
             ->with(compact('input_id'));
+    }
+
+    public function showIndex()
+    {
+        return $this->app['view']
+            ->make('backpack.filemanager::elfinder')
+            ->with($this->getViewVars());
     }
 }

@@ -2,8 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         
-        @include('vendor.elfinder.common_scripts')
-        @include('vendor.elfinder.common_styles', ['styleBodyElement' => true])
+        @include('backpack.filemanager::common_scripts')
+        @include('backpack.filemanager::common_styles', ['styleBodyElement' => true])
         <style type="text/css">
         .elfinder-workzone {
             min-height: max-content !important;
@@ -32,7 +32,7 @@
                     url: '{{ route("elfinder.connector") }}',  // connector URL
                     soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}',
                     resizable: false,
-                    onlyMimes: @json(unserialize(urldecode(request('mimes'))), JSON_UNESCAPED_SLASHES),
+                    onlyMimes: @json(urldecode(json_decode(request('mimes'))), JSON_UNESCAPED_SLASHES),
                     commandsOptions: {
                         getfile: {
                             multiple: {{ request('multiple') ? 'true' : 'false' }},
