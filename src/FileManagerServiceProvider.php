@@ -33,7 +33,7 @@ class FileManagerServiceProvider extends ServiceProvider
         // Fallback to package views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.filemanager');
 
-        $crudLanguages = array_keys(config('backpack.crud.languages', []));
+        $crudLanguages = array_keys(config('backpack.crud.locales', []));
         foreach ($crudLanguages as $language) {
             if ($language === 'en') {
                 continue;

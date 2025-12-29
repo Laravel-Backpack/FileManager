@@ -2,6 +2,7 @@
 
 namespace Backpack\FileManager;
 
+use Backpack\Basset\Facades\Basset;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
@@ -40,5 +41,18 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
         return $this->app['view']
             ->make('backpack.filemanager::elfinder')
             ->with($this->getViewVars());
+    }
+
+    protected function getViewVars()
+    {
+        $locale = str_replace('-', '_', $this->app->config->get('app.locale'));
+
+        if (! array_key_exists('bp-elfinder-i18n-'.$locale, Basset::getNamedAssets())) {
+            $locale = false;
+        }
+
+        $csrf = true;
+
+        return compact('locale', 'csrf');
     }
 }
