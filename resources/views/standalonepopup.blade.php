@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        
-        @include('backpack.filemanager::common_scripts')
+        @include('backpack.filemanager::localization')
+        @include('backpack.filemanager::common_scripts', ['locale' => in_array($locale, array_keys($elfinderConfiguredLanguages)) ? $locale : null])
         @include('backpack.filemanager::common_styles', ['styleBodyElement' => true])
         <style type="text/css">
         .elfinder-workzone {
@@ -25,6 +25,9 @@
                     // set your elFinder options here
                     @if($locale)
                         lang: '{{ $locale }}', // locale
+                        @if($locale !== 'en')
+                            i18nBaseUrl: '{{ \Illuminate\Support\Str::beforeLast(Basset::getUrl("bp-elfinder-i18n-".$locale), ".elfinder") }}/',
+                        @endif
                     @endif
                     customData: { 
                         _token: '{{ csrf_token() }}'
@@ -37,6 +40,9 @@
                         getfile: {
                             multiple: {{ request('multiple') ? 'true' : 'false' }},
                             oncomplete: 'destroy'
+                        },
+                        preference: {
+                            langs: @json($elfinderConfiguredLanguages)
                         }
                     },
                     getFileCallback: (file) => {
