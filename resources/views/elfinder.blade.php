@@ -13,7 +13,7 @@
     }
     // Add English if not present, as it's the fallback
     if (!array_key_exists('en', $elfinderConfiguredLanguages)) {
-            $elfinderConfiguredLanguages['en'] = 'English';
+        $elfinderConfiguredLanguages['en'] = 'English';
     }
 @endphp
 
@@ -21,7 +21,7 @@
 
     @include('backpack.filemanager::common_scripts', ['locale' => in_array($locale, array_keys($elfinderConfiguredLanguages)) ? $locale : null])
     @include('backpack.filemanager::common_styles')
-    
+
     <!-- elFinder initialization (REQUIRED) -->
     <script type="text/javascript" charset="utf-8">
         // Documentation for client options:
@@ -40,7 +40,7 @@
                         i18nBaseUrl: '{{ \Illuminate\Support\Str::beforeLast(Basset::getUrl("bp-elfinder-i18n-".$locale), "elfinder.") }}/',
                     @endif
                 @endif
-                customData: { 
+                customData: {
                     _token: '{{ csrf_token() }}'
                 },
                 url : '{{ route("elfinder.connector") }}',  // connector URL
@@ -52,25 +52,19 @@
 @endsection
 
 @php
-  $breadcrumbs = [
-    trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
-    trans('backpack::crud.file_manager') => false,
-  ];
+    $breadcrumbs = [
+        trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
+        trans('backpack::crud.file_manager') => false,
+    ];
 @endphp
 
 @section('header')
     <section class="container-fluid" bp-section="page-header">
-      <h1 bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
-    </section>
-@endsection
-
-@section('header')
-    <section class="header-operation container-fluid animated fadeIn d-flex mb-2 align-items-baseline d-print-none" bp-section="page-header">
-        <h1 class="text-capitalize mb-0" bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
+        <h1 bp-section="page-heading">{{ trans('backpack::crud.file_manager') }}</h1>
     </section>
 @endsection
 
 @section('content')
-        <!-- Element where elFinder will be created (REQUIRED) -->
-        <div id="elfinder"></div>
+    <!-- Element where elFinder will be created (REQUIRED) -->
+    <div id="elfinder"></div>
 @endsection
