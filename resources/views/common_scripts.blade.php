@@ -13,10 +13,7 @@
 ])
 
 {{-- elFinder JS (REQUIRED) --}}
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/js/elfinder.min.js', true, [
-	'integrity' => 'sha384-Ow1wKIUQLS9bOa23gn7yT91nyowDhk2zK1lO7G5Hnxlh3bvTPNH7c5uODf7/jIec', 
-	'crossorigin' => 'anonymous'
-])
+@basset(base_path('vendor/studio-42/elfinder/js/elfinder.min.js'))
 
 {{-- elFinder translation (OPTIONAL) --}}
 @if($locale)

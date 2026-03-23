@@ -32,14 +32,6 @@ class FileManagerServiceProvider extends ServiceProvider
 
         // Fallback to package views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'backpack.filemanager');
-
-        $crudLanguages = array_keys(config('backpack.crud.locales', []));
-        foreach ($crudLanguages as $language) {
-            if ($language === 'en') {
-                continue;
-            }
-            Basset::map('bp-elfinder-i18n-'.$language, 'https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/js/i18n/elfinder.'.$language.'.js');
-        }
     }
 
     public function register()

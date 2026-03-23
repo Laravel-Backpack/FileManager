@@ -41,7 +41,7 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                         @if($locale !== 'en')
-                            i18nBaseUrl: '{{ \Illuminate\Support\Str::beforeLast(Basset::getUrl("bp-elfinder-i18n-".$locale), ".elfinder") }}/',
+                            i18nBaseUrl: '{{ Basset::getUrl(base_path("vendor/studio-42/js/i18n/elfinder.{$locale}.js")) }}/',
                         @endif
                     @endif
                     customData: { 
