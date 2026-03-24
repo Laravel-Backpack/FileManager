@@ -22,6 +22,8 @@
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.woff', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.ttf', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.woff2', false)
+@basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css', false)
+<span data-elfinder-light-theme-url="{{ Basset::getUrl('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css') }}" style="display:none"></span>
 @bassetBlock('elfinderThemeSwitcherScript.js')
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,19 +41,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addElfinderLightStylesheet() {
-        let themeLightAsset = `{{ Basset::basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css') }}`;
-        const match = themeLightAsset.match(/<link\s+href="([^"]+)"/i);
-        if (match && match.length > 1) {
-            let mainStyleSheet = getElfinderStyleSheet();
-            let lightStyleSheet = getElfinderStyleSheet(false);
-            // if found append the light mode css to the main theme stylesheet
-            if (mainStyleSheet && ! lightStyleSheet) {
-                let themeLight = document.createElement('link');
-                themeLight.href = match[1];
-                themeLight.rel = 'stylesheet';
-                themeLight.type = 'text/css';
-                mainStyleSheet.insertAdjacentElement('afterend', themeLight);
-            }
+        let lightThemeEl = document.querySelector('[data-elfinder-light-theme-url]');
+        if (!lightThemeEl) return;
+        let lightThemeUrl = lightThemeEl.getAttribute('data-elfinder-light-theme-url');
+        if (!lightThemeUrl) return;
+
+        let mainStyleSheet = getElfinderStyleSheet();
+        let lightStyleSheet = getElfinderStyleSheet(false);
+        // if found append the light mode css to the main theme stylesheet
+        if (mainStyleSheet && ! lightStyleSheet) {
+            let themeLight = document.createElement('link');
+            themeLight.href = lightThemeUrl;
+            themeLight.rel = 'stylesheet';
+            themeLight.type = 'text/css';
+            mainStyleSheet.insertAdjacentElement('afterend', themeLight);
         }
     }
 
@@ -81,13 +84,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // we dont want to style the body when elfinder is loaded as a component in a backpack view
-    // we pass true when loading elfinder inside an iframe to style the iframe body.
-    @if($styleBodyElement ?? false) 
-        // use the topbar and footbar darker color as the background to ease transitions
-        document.getElementsByTagName('body')[0].style.background = '#061325';
-        document.getElementsByTagName('body')[0].style.opacity = 1;
-    @endif
 });
 </script>
 @endBassetBlock
+@if($styleBodyElement ?? false)
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // we dont want to style the body when elfinder is loaded as a component in a backpack view
+        // we pass true when loading elfinder inside an iframe to style the iframe body.
+        // use the topbar and footbar darker color as the background to ease transitions
+        document.getElementsByTagName('body')[0].style.background = '#061325';
+        document.getElementsByTagName('body')[0].style.opacity = 1;
+    });
+</script>
+@endif
