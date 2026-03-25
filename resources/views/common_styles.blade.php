@@ -34,8 +34,7 @@
 @endBassetBlock
 <span data-elfinder-light-theme-url="{{ Basset::getUrl('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css') }}" style="display:none"></span>
 @bassetBlock('elfinderThemeSwitcherScript.js')
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
+<script type="module">
     function getElfinderStyleSheet(main = true) {
     const regex = new RegExp(main ? `RobiNN1\/elFinder-Material-Theme@3.0.0\/Material\/css\/theme\.min\.css` : `RobiNN1\/elFinder-Material-Theme@3.0.0\/Material\/css\/theme-gray\.min\.css`);        const linkElements = document.querySelectorAll('link[rel="stylesheet"]');
         // Find the main elfinder stylesheet
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let colorMode = window.parent.colorMode?.result ?? window.colorMode?.result ?? false;
-   
+
     if(colorMode !== 'dark') {
         addElfinderLightStylesheet();
     }
@@ -87,23 +86,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // in case we switched to dark mode, remove the ligth theme css
             if(scheme === 'dark') {
                 selectedLinkElement.parentNode.removeChild(selectedLinkElement);
-                return true; 
+                return true;
             }
             addElfinderLightStylesheet()
         });
     }
-
-});
 </script>
 @endBassetBlock
+
 @if($styleBodyElement ?? false)
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        // we dont want to style the body when elfinder is loaded as a component in a backpack view
-        // we pass true when loading elfinder inside an iframe to style the iframe body.
-        // use the topbar and footbar darker color as the background to ease transitions
-        document.getElementsByTagName('body')[0].style.background = '#061325';
-        document.getElementsByTagName('body')[0].style.opacity = 1;
-    });
+<script type="module">
+    // we dont want to style the body when elfinder is loaded as a component in a backpack view
+    // we pass true when loading elfinder inside an iframe to style the iframe body.
+    // use the topbar and footbar darker color as the background to ease transitions
+    document.getElementsByTagName('body')[0].style.background = '#061325';
+    document.getElementsByTagName('body')[0].style.opacity = 1;
 </script>
 @endif
