@@ -102,5 +102,5 @@ return [
     | Determined users can always bypass client-side restrictions. 
     |
     */
-    'encrypt_mimes' => false,
+    'encrypt_mimes' => true,
 ];
