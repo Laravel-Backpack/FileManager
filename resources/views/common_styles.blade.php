@@ -99,7 +99,7 @@
     // we dont want to style the body when elfinder is loaded as a component in a backpack view
     // we pass true when loading elfinder inside an iframe to style the iframe body.
     // use the topbar and footbar darker color as the background to ease transitions
-    document.getElementsByTagName('body')[0].style.background = '#061325';
-    document.getElementsByTagName('body')[0].style.opacity = 1;
+    document.body.style.background = '#061325';
+    document.body.style.opacity = 1;
 </script>
 @endif
