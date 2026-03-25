@@ -11,7 +11,10 @@ $field['wrapper'] = $field['wrapper'] ?? $field['wrapperAttributes'] ?? [];
 $field['wrapper']['data-init-function'] = $field['wrapper']['data-init-function'] ?? 'bpFieldInitBrowseMultipleElement';
 $field['wrapper']['data-elfinder-trigger-url'] = $field['wrapper']['data-elfinder-trigger-url'] ?? url(config('elfinder.route.prefix').'/popup/'.$field['name'].'?multiple=1');
 
-$field['wrapper']['data-elfinder-trigger-url'] .= '&mimes='.urlencode(Crypt::encrypt($field['mime_types'] ?? ''));
+$mimeTypes = $field['mime_types'] ?? '';
+$field['wrapper']['data-elfinder-trigger-url'] .= '&mimes='.urlencode(
+    config('elfinder.encrypt_mimes', true) ? Crypt::encrypt($mimeTypes) : json_encode($mimeTypes, JSON_UNESCAPED_SLASHES)
+);
 
 if ($multiple) {
     $field['wrapper']['data-multiple'] = "true";

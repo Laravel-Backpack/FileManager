@@ -1,7 +1,10 @@
 {{-- browse server input --}}
 @php
 $field['attributes']['data-elfinder-trigger-url'] = $field['attributes']['data-elfinder-trigger-url'] ?? url(config('elfinder.route.prefix').'/popup/'.$field['name']);
-$field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(Crypt::encrypt($field['mime_types'] ?? ''));
+$mimeTypes = $field['mime_types'] ?? '';
+$field['attributes']['data-elfinder-trigger-url'] .= '?mimes='.urlencode(
+    config('elfinder.encrypt_mimes', true) ? Crypt::encrypt($mimeTypes) : json_encode($mimeTypes, JSON_UNESCAPED_SLASHES)
+);
 @endphp
 @include('crud::fields.inc.wrapper_start')
     <label>{!! $field['label'] !!}</label>
