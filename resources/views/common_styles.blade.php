@@ -1,18 +1,9 @@
 <meta charset="utf-8">
 <title>File Manager</title>
 {{-- elFinder CSS (REQUIRED) --}}
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/icons-big.svg', false, [
-    'integrity' => 'sha384-BWeb84E4ly6GgjPMWRpJNB+I8XpW+xqF9kezQR6PNqXP0pmjHi8iqlGZs0JRgHlu', 
-    'crossorigin' => 'anonymous'
-])
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/img/logo.png', false, [
-    'integrity' => 'sha384-mAtths5Wl6rU0MrgaCz2bJRTIG8LhA1pLZ4ZX+Qo9fQRjlKFxb5eLWUO3pZ7Aioq', 
-    'crossorigin' => 'anonymous'
-])
-@basset('https://raw.githubusercontent.com/Studio-42/elFinder/refs/tags/2.1.64/css/elfinder.min.css', true, [
-    'integrity' => 'sha384-O+x3Lv203m3W8SILSSf8xt2ryvN+CEx3s9tpGloi3D6UQ+1BkbXPuSxEj7uhKKCs', 
-    'crossorigin' => 'anonymous'
-])
+@basset(base_path('vendor/studio-42/elfinder/img/icons-big.svg'))
+@basset(base_path('vendor/studio-42/elfinder/img/logo.png'))
+@basset(base_path('vendor/studio-42/elfinder/css/elfinder.min.css'))
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme.min.css')
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/loading.svg', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.eot', false)
