@@ -99,7 +99,7 @@ return [
     | When enabled, MIME types configured on browse/browse_multiple fields are
     | encrypted before being passed to the frontend, preventing CASUAL URL
     | tampering. Note that this is a UI-level convenience only — NOT A SECURITY MEASURE.
-    | Determined users can always bypass client-side restrictions. 
+    | Determined users can always bypass client-side restrictions.
     |
     */
     'encrypt_mimes' => false,
