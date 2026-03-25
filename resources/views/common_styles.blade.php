@@ -4,6 +4,10 @@
 @basset(base_path('vendor/studio-42/elfinder/img/icons-big.svg'))
 @basset(base_path('vendor/studio-42/elfinder/img/logo.png'))
 @basset(base_path('vendor/studio-42/elfinder/css/elfinder.min.css'))
+@basset('https://cdn.jsdelivr.net/npm/jquery-ui@1.14.2/dist/themes/smoothness/jquery-ui.min.css', true, [
+    'integrity' => 'sha384-e4Bm/JKXqLbEnnDNLZIbB0u9VBy3H9D+TNdLb22ybxTLsmtWgRhQ3/BKEgJ13zU2',
+    'crossorigin' => 'anonymous',
+])
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme.min.css')
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/images/loading.svg', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.eot', false)
