@@ -43,6 +43,8 @@
                 customData: {
                     _token: '{{ csrf_token() }}'
                 },
+                height: '80%',
+                width: 'auto',
                 url : '{{ route("elfinder.connector") }}',  // connector URL
                 soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}',
                 cssAutoLoad: false,
