@@ -12,16 +12,20 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
     {
         $mimes = request('mimes');
 
-        if (! isset($mimes)) {
-            Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
-            abort(403, 'Unauthorized action.');
-        }
+        if (config('elfinder.encrypt_mimes', true)) {
+            if (! isset($mimes)) {
+                Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
+                abort(403, 'Unauthorized action.');
+            }
 
-        try {
-            $mimes = Crypt::decrypt(urldecode(request('mimes')));
-        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-            Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
-            abort(403, 'Unauthorized action.');
+            try {
+                $mimes = Crypt::decrypt(urldecode($mimes));
+            } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+                Log::error('Someone attempted to tamper with mime types in elfinder popup. The attempt was blocked.');
+                abort(403, 'Unauthorized action.');
+            }
+        } else {
+            $mimes = $mimes ? json_decode(urldecode($mimes), true) : '';
         }
 
         if (! empty($mimes)) {

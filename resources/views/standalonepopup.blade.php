@@ -30,6 +30,7 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+
                 let elfinderConfig = {
                     cssAutoLoad : false,
                     speed: 100,
@@ -46,7 +47,7 @@
                     url: '{{ route("elfinder.connector") }}',  // connector URL
                     soundPath: '{{ Basset::getUrl(base_path("vendor/studio-42/elfinder/sounds")) }}',
                     resizable: false,
-                    onlyMimes: @json(urldecode(json_decode(request('mimes'))), JSON_UNESCAPED_SLASHES),
+                    onlyMimes: @json(json_decode(urldecode(request('mimes'))), JSON_UNESCAPED_SLASHES),
                     commandsOptions: {
                         getfile: {
                             multiple: {{ request('multiple') ? 'true' : 'false' }},
@@ -66,8 +67,10 @@
                     },                    
                 };
                 let elfinderOptions = window.parent.elfinderOptions ?? {};
+                @if(config('elfinder.encrypt_mimes', true))
+                    delete elfinderOptions.onlyMimes;
+                @endif
                 var elf = $('#elfinder').elfinder({...elfinderConfig, ...elfinderOptions}).elfinder('instance');
-
                 document.getElementById('elfinder').style.opacity = 1;   
             });          
         </script>
