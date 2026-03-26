@@ -18,6 +18,20 @@
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.ttf', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/font/material.woff2', false)
 @basset('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css', false)
+@bassetBlock('elfinderCommonStyles.css')
+<style>
+    .elfinder .elfinder-toolbar .elfinder-button,
+    .elfinder .elfinder-toolbar .elfinder-button.ui-state-default,
+    .elfinder .elfinder-toolbar .elfinder-button.ui-state-hover,
+    .elfinder .elfinder-toolbar .elfinder-button.ui-state-active,
+    .elfinder .elfinder-toolbar .elfinder-button.ui-state-focus {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+</style>
+@endBassetBlock
 <span data-elfinder-light-theme-url="{{ Basset::getUrl('https://cdn.jsdelivr.net/gh/RobiNN1/elFinder-Material-Theme@3.0.0/Material/css/theme-gray.min.css') }}" style="display:none"></span>
 @bassetBlock('elfinderThemeSwitcherScript.js')
 <script type="text/javascript">
