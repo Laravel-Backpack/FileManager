@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" style="height:100%;overflow:hidden;">
     <head>
         @php
             $elfinderLanguages = [
@@ -20,10 +20,6 @@
         @include('backpack.filemanager::common_scripts', ['locale' => in_array($locale, array_keys($elfinderConfiguredLanguages)) ? $locale : null])
         @include('backpack.filemanager::common_styles', ['styleBodyElement' => true])
         <style type="text/css">
-        .elfinder-workzone {
-            min-height: max-content !important;
-        }
-
         #elfinder {
             height: 100% !important;
             width: 100% !important;
@@ -76,7 +72,7 @@
             });          
         </script>
     </head>
-    <body style="margin:0;position:absolute;top:0;left:0;width:100%;height:100%;">
+    <body style="margin:0;padding:0;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;">
 
         <!-- Element where elFinder will be created (REQUIRED) -->
         <div id="elfinder" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
