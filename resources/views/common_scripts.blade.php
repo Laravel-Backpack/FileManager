@@ -7,8 +7,8 @@
 @endif
 
 {{-- jQuery UI and Smoothness theme --}}
-@basset('https://raw.githubusercontent.com/jquery/jquery-ui/refs/tags/1.13.2/dist/jquery-ui.min.js', true, [
-	'integrity' => 'sha384-4D3G3GikQs6hLlLZGdz5wLFzuqE9v4yVGAcOH86y23JqBDPzj9viv0EqyfIa6YUL', 
+@basset('https://cdn.jsdelivr.net/npm/jquery-ui@1.14.2/dist/jquery-ui.min.js', true, [
+	'integrity' => 'sha384-tBcEcHGtNy7/Mx08+YxuvQ6v6s0N2jgehtFiT+bLtGwTj/txXtB/L5GqXfggm5sS',
 	'crossorigin' => 'anonymous'
 ])
 
