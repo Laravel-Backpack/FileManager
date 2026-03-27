@@ -1,8 +1,8 @@
 <meta charset="utf-8">
 <title>File Manager</title>
 {{-- elFinder CSS (REQUIRED) --}}
-@basset(base_path('vendor/studio-42/elfinder/img/icons-big.svg'))
-@basset(base_path('vendor/studio-42/elfinder/img/logo.png'))
+@basset(base_path('vendor/studio-42/elfinder/img/icons-big.svg'), false)
+@basset(base_path('vendor/studio-42/elfinder/img/logo.png'), false)
 @basset(base_path('vendor/studio-42/elfinder/css/elfinder.min.css'))
 @basset('https://cdn.jsdelivr.net/npm/jquery-ui@1.14.2/dist/themes/smoothness/jquery-ui.min.css', true, [
     'integrity' => 'sha384-e4Bm/JKXqLbEnnDNLZIbB0u9VBy3H9D+TNdLb22ybxTLsmtWgRhQ3/BKEgJ13zU2',
