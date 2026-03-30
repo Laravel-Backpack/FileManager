@@ -47,7 +47,8 @@
 @endBassetBlock
 
 @bassetBlock('elfinderThemeSwitcherScript.js')
-<script type="module">
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
     const getElfinderStyleLink = (name) => document.querySelector(`[data-stylesheet-name="elfinder-theme-${name}"]`);
 
     const setElfinderMode = (name) => {
@@ -66,6 +67,7 @@
         // Default to light mode
         setElfinderMode('light');
     }
+});
 </script>
 @endBassetBlock
 
