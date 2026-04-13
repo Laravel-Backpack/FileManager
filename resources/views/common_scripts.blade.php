@@ -15,10 +15,5 @@
 {{-- elFinder JS (REQUIRED) --}}
 @basset(base_path('vendor/studio-42/elfinder/js/elfinder.min.js'))
 
-{{-- elFinder translation (OPTIONAL) --}}
-@if($locale)
-	@basset('bp-elfinder-i18n-'.$locale)
-@endif
-
 {{-- elFinder sounds --}}
 @basset(base_path('vendor/studio-42/elfinder/sounds/rm.wav'))
