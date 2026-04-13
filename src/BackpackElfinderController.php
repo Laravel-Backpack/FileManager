@@ -2,7 +2,6 @@
 
 namespace Backpack\FileManager;
 
-use Backpack\Basset\Facades\Basset;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
@@ -49,7 +48,7 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
 
     protected function getViewVars()
     {
-        $dir = 'packages/barryvdh/' . $this->package;
+        $dir = 'packages/barryvdh/'.$this->package;
         $locale = str_replace('-', '_', $this->app->config->get('app.locale'));
 
         if (! file_exists(base_path("vendor/studio-42/elfinder/js/i18n/elfinder.{$locale}.js"))) {
