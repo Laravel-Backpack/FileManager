@@ -26,6 +26,12 @@
     <script type="text/javascript" charset="utf-8">
         // Documentation for client options:
         // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+        
+        // elFinder does not fully support jQuery UI 1.13+ yet, so we need to add this workaround.
+        if (typeof $.fn.buttonset !== 'function' && typeof $.fn.controlgroup === 'function') {
+            $.fn.buttonset = $.fn.controlgroup;
+        }
+
         $(document).ready(function() {
             $('#elfinder').elfinder({
                 // set your elFinder options here
