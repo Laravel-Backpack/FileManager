@@ -49,14 +49,15 @@ class BackpackElfinderController extends \Barryvdh\Elfinder\ElfinderController
 
     protected function getViewVars()
     {
+        $dir = 'packages/barryvdh/' . $this->package;
         $locale = str_replace('-', '_', $this->app->config->get('app.locale'));
 
-        if (! array_key_exists('bp-elfinder-i18n-'.$locale, Basset::getNamedAssets())) {
+        if (! file_exists(base_path("vendor/studio-42/elfinder/js/i18n/elfinder.{$locale}.js"))) {
             $locale = false;
         }
 
         $csrf = true;
 
-        return compact('locale', 'csrf');
+        return compact('dir', 'locale', 'csrf');
     }
 }
